@@ -6,10 +6,13 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules/vm.nix
-    ];
+  [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./modules/vm.nix
+  ];
+
+  #custom modules
+  vm.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
