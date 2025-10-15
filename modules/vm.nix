@@ -20,7 +20,7 @@
   ];
 
   # manage virtualization services
-  virtualization = {
+  virtualisation = {
     libvirtd = {
       enable = true;
       qemu = {
