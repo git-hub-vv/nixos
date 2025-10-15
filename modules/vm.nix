@@ -3,7 +3,7 @@
 
   options =
   {
-    vm.enable = lib.mkEnableOption "enables vm"
+    vm.enable = lib.mkEnableOption "enables vm";
   };
 
   config = lib.mkIf config.vm.enable {
