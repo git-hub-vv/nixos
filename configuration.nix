@@ -105,6 +105,7 @@
   protonvpn-gui
   signal-desktop
   vesktop
+  ghostty
   libreoffice-qt-still
   zed-editor
   git
