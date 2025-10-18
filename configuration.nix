@@ -116,6 +116,7 @@
   git
   home-manager
   fanctl
+  freecad
   clang-tools  #C/C++ language server
   gdb          #debugger
   gcc          #C compiler
