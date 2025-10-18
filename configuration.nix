@@ -115,6 +115,7 @@
   zed-editor
   git
   home-manager
+  fanctl
   clang-tools  #C/C++ language server
   gdb          #debugger
   gcc          #C compiler
