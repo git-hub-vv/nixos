@@ -9,10 +9,12 @@
   [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/vm.nix
+    ../../modules/gaming.nix
   ];
 
   #custom modules
   vm.enable = true;
+  gaming.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -92,7 +94,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
     ];
   };
 
@@ -152,11 +153,5 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-
-
-
-
-  #own stuff
-  programs.steam.enable = true;
 
 }
