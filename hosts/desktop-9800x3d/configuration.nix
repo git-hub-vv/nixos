@@ -8,13 +8,17 @@
   imports =
   [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    # modules
     ../../modules/vm.nix
     ../../modules/gaming.nix
+    ../../modules/dev.nix
   ];
 
-  #custom modules
+  # module settings
   vm.enable = true;
   gaming.enable = true;
+  dev.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -113,15 +117,11 @@
   vesktop
   ghostty
   libreoffice-qt-still
-  zed-editor
   git
   home-manager
   fanctl
   freecad
   orca-slicer
-  clang-tools  #C/C++ language server
-  gdb          #debugger
-  gcc          #C compiler
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
