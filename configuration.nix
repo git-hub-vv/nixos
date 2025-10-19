@@ -117,6 +117,7 @@
   home-manager
   fanctl
   freecad
+  orca-slicer
   clang-tools  #C/C++ language server
   gdb          #debugger
   gcc          #C compiler
