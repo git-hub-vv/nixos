@@ -8,7 +8,8 @@
     nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           { nix.settings.experimental-features = ["nix-command" "flakes"]; }
-          ./hosts/desktop-9800x3d/configuration.nix
+          # edit this path
+          /home/your_user/hosts/your_host/configuration.nix
         ];
     };
 
