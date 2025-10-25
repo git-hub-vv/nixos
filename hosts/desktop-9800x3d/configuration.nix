@@ -122,6 +122,8 @@
   fanctl
   freecad
   orca-slicer
+  bluez
+  bluez-tools
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
