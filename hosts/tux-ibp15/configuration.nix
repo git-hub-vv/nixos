@@ -15,6 +15,7 @@
 
     #modules
     ../../modules/vm.nix
+    ../../modules/gaming.nix
   ];
   vm.enable = true;
 
@@ -122,9 +123,6 @@
     gcc             #C compiler
   ];
 
-  programs.steam.enable = true;
-
-  virtualisation.virtualbox.host.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
