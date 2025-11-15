@@ -113,6 +113,7 @@
   neovim
   vivaldi
   protonvpn-gui
+  protonmail-bridge-gui
   signal-desktop
   vesktop
   ghostty
@@ -124,6 +125,8 @@
   orca-slicer
   bluez
   bluez-tools
+  picard
+  qbittorrent
   ];
 
   hardware.bluetooth.enable = true;
