@@ -127,6 +127,8 @@
   bluez-tools
   picard
   qbittorrent
+  bisq2
+  prismlauncher
   ];
 
   hardware.bluetooth.enable = true;
