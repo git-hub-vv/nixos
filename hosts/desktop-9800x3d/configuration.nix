@@ -132,6 +132,7 @@
   starship
   nerd-fonts.jetbrains-mono
   btop
+  obsidian
   ];
 
   hardware.bluetooth.enable = true;
