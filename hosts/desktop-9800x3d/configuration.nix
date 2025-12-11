@@ -129,6 +129,9 @@
   qbittorrent
   bisq2
   prismlauncher
+  starship
+  nerd-fonts.jetbrains-mono
+  btop
   ];
 
   hardware.bluetooth.enable = true;
