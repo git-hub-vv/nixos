@@ -16,8 +16,11 @@
     #modules
     ../../modules/vm.nix
     ../../modules/gaming.nix
+    ../../modules/dev.nix
   ];
   vm.enable = true;
+  dev.enable = true;
+  gaming.enable = true;
 
   #needs fixin doesnt belong here !!!!!!!!!
   users.users.vv.isNormalUser = true;
@@ -118,10 +121,16 @@
     signal-desktop
     zed-editor
     git
+    bluez
+    bluez-tools
+    vlc
     clang-tools     #C/C++ language server
     gdb             #debugger
     gcc             #C compiler
   ];
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
 
   # Some programs need SUID wrappers, can be configured further or are
