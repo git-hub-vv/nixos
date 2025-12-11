@@ -21,7 +21,7 @@
       virt-viewer
       spice spice-gtk
       spice-protocol
-      win-virtio
+      virtio-win
       win-spice
       adwaita-icon-theme
     ];
@@ -30,11 +30,12 @@
     virtualisation = {
       libvirtd = {
         enable = true;
-        qemu = {
-          swtpm.enable = true;
-          ovmf.enable = true;
-          ovmf.packages = [ pkgs.OVMFFull.fd ];
-        };
+        #qemu = {
+          #swtpm.enable = true;
+          #ovmf.enable = true;
+          #ovmf.packages = [ pkgs.OVMFFull.fd ];
+        #};
+        #was necessary in package channel 25.5 - removed it on 2025-12-11
       };
       spiceUSBRedirection.enable = true;
     };
