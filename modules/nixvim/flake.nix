@@ -2,12 +2,14 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
-    nixvim.url = "github:nix-community/nixvim-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = {nixvim, flake-parts, ... }: {
+  outputs = 
+    { nixvim, flake-parts, ... }@inputs:
+
     #generated on flake init
     #packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
     #packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
@@ -15,9 +17,6 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
       ];
 
       perSystem =
@@ -27,7 +26,7 @@
           nixvim' = nixvim.legacyPackages.${system};
           nixvimModule = {
             inherit system; # or alternatively, set `pkgs`
-            module = import ./config; # import the module directly
+            module = import ./config/default.nix; # import the module directly
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
               # inherit (inputs) foo;
