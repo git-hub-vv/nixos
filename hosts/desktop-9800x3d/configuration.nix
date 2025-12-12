@@ -13,6 +13,7 @@
     ../../modules/vm.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
+    ../../modules/nixvim/nixvim.nix
   ];
 
   # module settings
