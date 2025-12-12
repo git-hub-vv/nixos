@@ -13,7 +13,7 @@
     ../../modules/vm.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
-    ../../modules/nixvim/nixvim.nix
+    #../../modules/nixvim/nixvim.nix moved to environment packages
   ];
 
   # module settings
@@ -133,6 +133,7 @@
   nerd-fonts.jetbrains-mono
   btop
   obsidian
+  (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
   ];
 
   hardware.bluetooth.enable = true;
