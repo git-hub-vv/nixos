@@ -108,6 +108,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  programs.bash = {
+    enable = true;
+    shellAliases = { 
+      "rebflake" = "nixos-rebuild switch --flake /home/vv/nixos/hosts/desktop-9800x3d/ --impure";
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -120,6 +127,7 @@
   libreoffice-qt-still
   git
   home-manager
+  neofetch
   fanctl
   freecad
   orca-slicer

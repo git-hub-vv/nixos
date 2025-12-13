@@ -56,6 +56,9 @@
       openOnSetup = true;
       openOnSetupFile = true;
     };
+
+    # obsidian.nvim 
+      # set up later
   };  
 
   
