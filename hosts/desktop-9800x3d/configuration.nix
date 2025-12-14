@@ -13,6 +13,7 @@
     ../../modules/vm.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
+    #../../modules/nixvim/nixvim.nix moved to environment packages
   ];
 
   # module settings
@@ -107,10 +108,16 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  programs.bash = {
+    enable = true;
+    shellAliases = { 
+      "rebflake" = "nixos-rebuild switch --flake /home/vv/nixos/hosts/desktop-9800x3d/ --impure";
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  neovim
   vivaldi
   protonvpn-gui
   protonmail-bridge-gui
@@ -120,6 +127,7 @@
   libreoffice-qt-still
   git
   home-manager
+  neofetch
   fanctl
   freecad
   orca-slicer
@@ -133,6 +141,7 @@
   nerd-fonts.jetbrains-mono
   btop
   obsidian
+  (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
   ];
 
   hardware.bluetooth.enable = true;

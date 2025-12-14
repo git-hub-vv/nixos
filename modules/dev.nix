@@ -14,7 +14,6 @@
     [
       # general
       zed-editor
-      neovim
 
       # C lang
       clang-tools  #C/C++ language server
