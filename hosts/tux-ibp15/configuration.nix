@@ -127,6 +127,7 @@
     clang-tools     #C/C++ language server
     gdb             #debugger
     gcc             #C compiler
+    obsidian
   ];
 
   hardware.bluetooth.enable = true;
