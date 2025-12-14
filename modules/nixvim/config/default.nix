@@ -21,10 +21,20 @@
     lsp = {
       enable = true;
       servers = {
-        tsserver.enable = true;  # javascript / typescript
+        ts-ls.enable = true;  # javascript / typescript
         lua-ls.enable = true;  # lua
-        rust-analyzer.enable = true;  # rust
+        rust-analyzer = { #rust
+          enable = true;
+          installRustc = true;
+          installCargo = true; 
+        };
+        zls.enable = true; # zig
       };
+    };
+
+    zig = {
+      enable = true;
+      autoLoad = true;
     };
 
     # completion
@@ -55,14 +65,25 @@
       autoLoad = true;
       openOnSetup = true;
       openOnSetupFile = true;
+      autoClose = true;
     };
 
     # obsidian.nvim 
       # set up later
-  };  
+  };
+
+  keymaps = [
+    {
+      mode = "t";
+      action = "<C-\\><C-n>";
+      key = "<Esc><Esc>";
+      options.silent = true;
+      options.noremap = true;
+    }
+  ];
 
   
-  colorschemes.gruvbox.enable = true;
+  #colorschemes.gruvbox.enable = true;
   
   opts = {
     number = true; # display line numbers
