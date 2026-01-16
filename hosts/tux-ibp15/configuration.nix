@@ -128,6 +128,7 @@
     gdb             #debugger
     gcc             #C compiler
     obsidian
+    (builtins.getFlake "/home/main/nixos/modules/nixvim").packages.${pkgs.system}.default
   ];
 
   hardware.bluetooth.enable = true;
