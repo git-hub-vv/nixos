@@ -21,10 +21,7 @@
   vm.enable = true;
   dev.enable = true;
   gaming.enable = true;
-  
-  ###  Auto set config path, but doesnt work with flake  ###
-  #nix.nixPath = [
-  #  "nixos-config=/home/main/nixos/hosts/tux-ibp15/"  ];
+
 
   #needs fixin doesnt belong here !!!!!!!!!
   users.users.vv.isNormalUser = true;
@@ -134,6 +131,15 @@
     obsidian
     (builtins.getFlake "/home/main/nixos/modules/nixvim").packages.${pkgs.system}.default
     nodejs
+    (pkgs.writeShellApplication {
+      name = "rebuild-system";
+      runtimeInputs = with pkgs; [ nixos-rebuild ];
+      text = ''
+        set -euo pipefail
+        FLAKE_DIR="$(dirname "$PWD")"/nixos/hosts/tux-ibp15/
+        nixos-rebuild switch --flake "$FLAKE_DIR" --impure
+      '';
+    })
   ];
 
   hardware.bluetooth.enable = true;
