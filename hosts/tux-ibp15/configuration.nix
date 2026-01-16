@@ -21,6 +21,10 @@
   vm.enable = true;
   dev.enable = true;
   gaming.enable = true;
+  
+  ###  Auto set config path, but doesnt work with flake  ###
+  #nix.nixPath = [
+  #  "nixos-config=/home/main/nixos/hosts/tux-ibp15/"  ];
 
   #needs fixin doesnt belong here !!!!!!!!!
   users.users.vv.isNormalUser = true;
