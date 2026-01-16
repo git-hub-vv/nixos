@@ -129,6 +129,7 @@
     gcc             #C compiler
     obsidian
     (builtins.getFlake "/home/main/nixos/modules/nixvim").packages.${pkgs.system}.default
+    nodejs
   ];
 
   hardware.bluetooth.enable = true;
