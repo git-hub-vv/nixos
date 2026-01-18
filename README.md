@@ -5,3 +5,6 @@ there is a folder for each host ontaining their configuration.nix, hardware-conf
 modules can be bundles of software, and anything else I would usually like to import in bulk
 ## home-manager
 currently not really used, something to add later
+
+
+sudo nixos-rebuild switch --flake /home/user/nixos/hosts/host/ --impure
