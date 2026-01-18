@@ -108,20 +108,26 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  programs.bash = {
-    enable = true;
-    shellAliases = { 
-      "rebflake" = "nixos-rebuild switch --flake /home/vv/nixos/hosts/desktop-9800x3d/ --impure";
-    };
-  };
+  
+  hardware.opentabletdriver.enable = true;
+
+  services.udev.packages = [
+    pkgs.opentabletdriver
+  ];
+
+  services.xserver.wacom.enable = false;
+  
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   vivaldi
   protonvpn-gui
-  protonmail-bridge-gui
+  python313
+  python313Packages.pip
   signal-desktop
+  nodejs
+  usbutils
   vesktop
   ghostty
   libreoffice-qt-still
@@ -141,7 +147,13 @@
   nerd-fonts.jetbrains-mono
   btop
   obsidian
+  nodejs_24
+  pnpm_9
   (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
+  xclicker
+  krita
+  huion-switcher
+  kdePackages.kde-cli-tools
   ];
 
   hardware.bluetooth.enable = true;
