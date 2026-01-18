@@ -7,25 +7,15 @@
   system.userActivationScripts.zshrc = "touch .zshrc";
   environment.shells = with pkgs; [ zsh ];
   programs.zsh = {
+    promptInit = ''
+    source /run/current-system/sw/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+  '';
     enable = true;
     enableCompletion = true;
     enableBashCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     histSize = 10000;
-
-    plugins = [
-      {
-        name = "powerlevel10k-config";
-        src = ./p10k;
-        file = "p10k.zsh";
-      }
-      {
-        name = "zsh-powerlevel10k";
-        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-        file = "powerlevel10k.zsh-theme";
-      }
-    ]
 
     ohMyZsh = {
       enable = true;
@@ -37,10 +27,16 @@
   };
   users.defaultUserShell = pkgs.zsh;
  
+  environment.etc."p10k.zsh".text =
+  import ./p10k.nix { inherit lib; };
 
   # packages
   environment.systemPackages = with pkgs;
   [
+    zsh
+    zsh-powerlevel10k
+    git
   ];
+  fonts.packages = [ pkgs.meslo-lgs-nf ];
 
 }
