@@ -13,7 +13,7 @@
     ../../modules/vm.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
-    ../../modules/zsh.nix
+    ../../modules/zsh/zsh.nix
     #../../modules/nixvim/nixvim.nix moved to environment packages
   ];
 
@@ -109,7 +109,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  
+
   hardware.opentabletdriver.enable = true;
 
   services.udev.packages = [
