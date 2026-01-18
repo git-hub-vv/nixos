@@ -6,12 +6,14 @@
 
   system.userActivationScripts.zshrc = "touch .zshrc";
   environment.shells = with pkgs; [ zsh ];
+  #environment.etc."zshrc.local".text = ''
+  #  export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+  #  export POWERLEVEL9K_CONFIG_FILE=/etc/p10k.zsh
+  #'';
   programs.zsh = {
     promptInit = ''
     source /run/current-system/sw/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-    export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-    export POWERLEVEL9K_CONFIG_FILE=/etc/p10k.zsh
-    '';
+        '';
 
     enable = true;
     enableCompletion = true;
@@ -33,7 +35,7 @@
   system.activationScripts.p10k = ''
     for d in /home/*; do
       if [ -d "$d" ] && [ ! -e "$d/.p10k.zsh" ]; then
-        ln -s /etc/skel/.p10k.zsh "$d/.p10k.zsh"
+        ln -s /etc/p10k.zsh "$d/.p10k.zsh"
       fi
     done
   '';
