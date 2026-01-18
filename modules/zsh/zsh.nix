@@ -26,9 +26,8 @@
     };
   };
   users.defaultUserShell = pkgs.zsh;
- 
-  environment.etc."p10k.zsh".text =
-  import ./p10k.nix { inherit lib; };
+
+  environment.etc."p10k.zsh".source = ./p10k.zsh;
 
   # packages
   environment.systemPackages = with pkgs;
