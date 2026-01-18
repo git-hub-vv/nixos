@@ -140,6 +140,8 @@
         nixos-rebuild switch --flake "$FLAKE_DIR" --impure
       '';
     })
+    notesnook
+    logseq
   ];
 
   hardware.bluetooth.enable = true;
