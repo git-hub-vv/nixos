@@ -22,6 +22,7 @@
   dev.enable = true;
   gaming.enable = true;
 
+
   #needs fixin doesnt belong here !!!!!!!!!
   users.users.vv.isNormalUser = true;
 
@@ -127,6 +128,18 @@
     clang-tools     #C/C++ language server
     gdb             #debugger
     gcc             #C compiler
+    obsidian
+    (builtins.getFlake "/home/main/nixos/modules/nixvim").packages.${pkgs.system}.default
+    nodejs
+    (pkgs.writeShellApplication {
+      name = "rebuild-system";
+      runtimeInputs = with pkgs; [ nixos-rebuild ];
+      text = ''
+        set -euo pipefail
+        FLAKE_DIR="$(dirname "$PWD")"/nixos/hosts/tux-ibp15/
+        nixos-rebuild switch --flake "$FLAKE_DIR" --impure
+      '';
+    })
   ];
 
   hardware.bluetooth.enable = true;
