@@ -17,6 +17,7 @@
     ../../modules/vm.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
+    ../../modules/zsh/zsh.nix
   ];
   vm.enable = true;
   dev.enable = true;
