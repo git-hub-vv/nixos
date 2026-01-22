@@ -14,6 +14,7 @@
     ../../modules/gaming.nix
     ../../modules/dev.nix
     ../../modules/zsh/zsh.nix
+    ../../niri/niri.nix
     #../../modules/nixvim/nixvim.nix moved to environment packages
   ];
 
@@ -164,6 +165,7 @@
       nixos-rebuild switch --flake "$FLAKE_DIR" --impure
     '';
   })
+  bat
   ];
 
   hardware.bluetooth.enable = true;
