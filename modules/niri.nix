@@ -1,8 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 {
 
-  programs.niri.enable = true;
-
+  programs.niri.enable = true;  
 
   environment.systemPackages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -14,7 +13,12 @@
     nemo
     fuzzel
     gpu-screen-recorder
+    qt6.qtwayland
   ];
+
+  environment.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland";
+  };
 
   services.greetd = {
     enable = true;

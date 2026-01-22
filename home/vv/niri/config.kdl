@@ -334,3 +334,5 @@ gestures {
         off
     }
 }
+
+spawn-at-startup "sh" "-c" "sleep 1 && noctalia-shell"

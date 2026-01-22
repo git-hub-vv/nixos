@@ -36,6 +36,11 @@
   home.sessionVariables = {
     XCURSOR_THEME = "BreezeX-RosePine-Linux";
     XCURSOR_SIZE = "24";
-    QT_QPA_PLATFORMTHEME = "gtk3";
+    #QT_QPA_PLATFORMTHEME = "gtk3";
+    QT_QPA_PLATFORMTHEME = "wayland";
   };
+
+   xdg.configFile."noctalia".source =
+   config.lib.file.mkOutOfStoreSymlink
+   "${config.home.homeDirectory}/nixos/config/noctalia";
 }
