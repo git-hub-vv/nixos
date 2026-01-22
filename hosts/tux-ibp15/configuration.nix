@@ -113,8 +113,18 @@
   programs.firefox.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-
+  hardware.tuxedo-rs = {
+    enable = true;
+    tailor-gui.enable = true;
+  };
   environment.systemPackages = with pkgs; [
+    linuxKernel.packages.linux_6_18.tuxedo-drivers
+      (python3.withPackages (ps: with ps; [
+        pip
+        pandas
+    ]))
+    #python313
+    #python313Packages.pandas
     vivaldi
     protonvpn-gui
     ghostty
