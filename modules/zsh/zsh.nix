@@ -14,7 +14,7 @@
   '';
   programs.zsh = {
     promptInit = ''
-    source /run/current-system/sw/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+  source /run/current-system/sw/share/zsh/themes/powerlevel10k/powerlevel10k.zsh-theme;
         '';
 
     enable = true;

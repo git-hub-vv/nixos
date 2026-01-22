@@ -2,19 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
-  [ # Include the results of the hardware scan.
+  [ 
     ./hardware-configuration.nix
+
+    inputs.home-manager.nixosModules.default
 
     # modules
     ../../modules/vm.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
     ../../modules/zsh/zsh.nix
-    ../../niri/niri.nix
+    ../../modules/niri.nix
     #../../modules/nixvim/nixvim.nix moved to environment packages
   ];
 
@@ -63,8 +65,8 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  #services.displayManager.sddm.enable = true;
+  #services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -100,7 +102,6 @@
     description = "vv";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
     ];
   };
 
@@ -123,50 +124,57 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  vivaldi
-  protonvpn-gui
-  python313
-  python313Packages.pip
-  signal-desktop
-  nodejs
-  usbutils
-  vesktop
-  ghostty
-  libreoffice-qt-still
-  git
-  home-manager
-  neofetch
-  fanctl
-  freecad
-  orca-slicer
-  bluez
-  bluez-tools
-  picard
-  qbittorrent
-  bisq2
-  prismlauncher
-  starship
-  nerd-fonts.jetbrains-mono
-  btop
-  obsidian
-  nodejs_24
-  pnpm_9
-  (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
-  xclicker
-  krita
-  huion-switcher
-  kdePackages.kde-cli-tools
-  (pkgs.writeShellApplication {
-    name = "rebuild-system";
-    runtimeInputs = with pkgs; [ nixos-rebuild ];
-    text = ''
-      set -euo pipefail
-      FLAKE_DIR="$(dirname "$PWD")"/nixos/hosts/desktop-9800x3d/
-      nixos-rebuild switch --flake "$FLAKE_DIR" --impure
-    '';
-  })
-  bat
+    vivaldi
+    protonvpn-gui
+    python313
+    python313Packages.pip
+    signal-desktop
+    nodejs
+    usbutils
+    vesktop
+    ghostty
+    libreoffice-qt-still
+    git
+    home-manager
+    neofetch
+    fanctl
+    freecad
+    orca-slicer
+    bluez
+    bluez-tools
+    picard
+    qbittorrent
+    bisq2
+    prismlauncher
+    starship
+    nerd-fonts.jetbrains-mono
+    btop
+    obsidian
+    nodejs_24
+    pnpm_9
+    (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
+    xclicker
+    krita
+    huion-switcher
+    kdePackages.kde-cli-tools
+    (pkgs.writeShellApplication {
+      name = "rebuild-system";
+      runtimeInputs = with pkgs; [ nixos-rebuild ];
+      text = ''
+        set -euo pipefail
+        FLAKE_DIR="$(dirname "$PWD")"/nixos/hosts/desktop-9800x3d/
+        nixos-rebuild switch --flake "$FLAKE_DIR" --impure
+      '';
+    })
+    bat
   ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "vv" = import ../../home/vv/home.nix;
+    };
+  };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
