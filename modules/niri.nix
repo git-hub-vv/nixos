@@ -14,6 +14,8 @@
     fuzzel
     gpu-screen-recorder
     qt6.qtwayland
+    brightnessctl
+    ddcutil
   ];
 
   environment.sessionVariables = {

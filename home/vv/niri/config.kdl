@@ -26,10 +26,22 @@ input {
      focus-follows-mouse max-scroll-amount="0%"
 }
 
-/-output "eDP-1" {
+/-output "DP-1" {
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1200@60.002"
-
+    mode "3840x2160@59.997"
+    transform "90"
+    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+    scale 1
+}
+/-output "DP-2" {
+    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+    mode "2560x1440@180"
+    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+    scale 1
+}
+/-output "DP-3" {
+    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+    mode "2560x1440@74.924"
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1
 }

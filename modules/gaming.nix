@@ -14,6 +14,7 @@
     environment.systemPackages = with pkgs;
     [
       mangohud  # overlay for fps, temps etc.
+      heroic
     ];
 
 
