@@ -30,11 +30,11 @@
         "volumeStep": 5
     },
     "bar": {
-        "backgroundOpacity": 0.93,
+        "backgroundOpacity": 0.7,
         "capsuleOpacity": 1,
         "density": "default",
         "exclusive": true,
-        "floating": false,
+        "floating": true,
         "hideOnOverview": false,
         "marginHorizontal": 5,
         "marginVertical": 5,
@@ -49,7 +49,7 @@
         ],
         "showCapsule": true,
         "showOutline": false,
-        "useSeparateOpacity": false,
+        "useSeparateOpacity": true,
         "widgets": {
             "center": [
                 {
@@ -59,30 +59,29 @@
                     "followFocusedScreen": false,
                     "groupedBorderOpacity": 1,
                     "hideUnoccupied": false,
-                    "iconScale": 0.8,
+                    "iconScale": 1,
                     "id": "Workspace",
                     "labelMode": "index",
                     "showApplications": false,
-                    "showLabelsOnlyWhenOccupied": false,
+                    "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
                 },
                 {
                     "defaultSettings": {
                         "hideInactive": false,
                         "removeMargins": false
-                    },
-                    "id": "plugin:privacy-indicator"
+                    }
                 }
             ],
             "left": [
                 {
-                    "customFont": "",
-                    "formatHorizontal": "yyyy-mm-d | hh:mm",
+                    "customFont": "mono",
+                    "formatHorizontal": "yyyy-mm-d  hh:mm",
                     "formatVertical": "HH mm - ddd, MMM dd",
                     "id": "Clock",
                     "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": false,
-                    "usePrimaryColor": false
+                    "useCustomFont": true,
+                    "usePrimaryColor": true
                 },
                 {
                     "compactMode": false,
@@ -91,14 +90,14 @@
                     "showCpuTemp": true,
                     "showCpuUsage": true,
                     "showDiskUsage": true,
-                    "showGpuTemp": false,
+                    "showGpuTemp": true,
                     "showLoadAverage": false,
                     "showMemoryAsPercent": false,
                     "showMemoryUsage": true,
                     "showNetworkStats": false,
                     "showSwapUsage": false,
                     "useMonospaceFont": true,
-                    "usePrimaryColor": false
+                    "usePrimaryColor": true
                 },
                 {
                     "compactMode": false,
@@ -111,7 +110,7 @@
                     "panelShowAlbumArt": true,
                     "panelShowVisualizer": true,
                     "scrollingMode": "hover",
-                    "showAlbumArt": false,
+                    "showAlbumArt": true,
                     "showArtistFirst": true,
                     "showProgressRing": true,
                     "showVisualizer": false,
@@ -142,23 +141,13 @@
                     "middleClickCommand": "pwvucontrol || pavucontrol"
                 },
                 {
-                    "deviceNativePath": "",
-                    "displayMode": "alwaysShow",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": false,
-                    "showPowerProfiles": true,
-                    "warningThreshold": 30
-                },
-                {
                     "colorizeDistroLogo": true,
                     "colorizeSystemIcon": "none",
                     "customIconPath": "/home/vv/nixos/media/icons/nix/nix-snowflake-colours.svg",
-                    "enableColorization": false,
+                    "enableColorization": true,
                     "icon": "nixOS",
                     "id": "ControlCenter",
-                    "useDistroLogo": false
+                    "useDistroLogo": true
                 }
             ]
         }
@@ -192,7 +181,7 @@
         "monitorForColors": "",
         "predefinedScheme": "Noctalia (default)",
         "schedulingMode": "off",
-        "useWallpaperColors": false
+        "useWallpaperColors": true
     },
     "controlCenter": {
         "cards": [
@@ -283,11 +272,11 @@
     },
     "dock": {
         "animationSpeed": 1,
-        "backgroundOpacity": 1,
+        "backgroundOpacity": 0.7,
         "colorizeIcons": false,
         "deadOpacity": 0.6,
-        "displayMode": "always_visible",
-        "enabled": false,
+        "displayMode": "auto_hide",
+        "enabled": true,
         "floatingRatio": 1,
         "inactiveIndicators": false,
         "monitors": [
@@ -297,13 +286,13 @@
         ],
         "pinnedStatic": false,
         "position": "bottom",
-        "size": 1
+        "size": 2
     },
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
         "animationDisabled": false,
         "animationSpeed": 1,
-        "avatarImage": "/home/gumbo/.face",
+        "avatarImage": "/home/vv/nixos/media/icons/nix/nix-snowflake-colours.svg",
         "boxRadiusRatio": 1,
         "compactLockScreen": false,
         "dimmerOpacity": 0.6,
@@ -342,12 +331,12 @@
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Tokyo, Japan",
+        "name": "Berlin, Germany",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": false,
-        "use12hourFormat": true,
-        "useFahrenheit": true,
+        "use12hourFormat": false,
+        "useFahrenheit": false,
         "weatherEnabled": true,
         "weatherShowEffects": true
     },
@@ -376,7 +365,7 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [
+        "monitors": [ "DP-3"
         ],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
@@ -483,19 +472,6 @@
         "tempWarningThreshold": 80,
         "useCustomColors": false,
         "warningColor": ""
-    },
-    "templates": {
-        "activeTemplates": [
-            {
-                "enabled": true,
-                "id": "code"
-            },
-            {
-                "enabled": true,
-                "id": "zenBrowser"
-            }
-        ],
-        "enableUserTheming": false
     },
     "ui": {
         "bluetoothDetailsViewMode": "grid",
