@@ -29,6 +29,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelParams = [
+    "amdgpu.ppfeaturemask=0xffffffff"
+  ];
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -121,6 +125,10 @@
   services.xserver.wacom.enable = false;
 
 
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
+  services.lact.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -129,12 +137,14 @@
     python313
     python313Packages.pip
     signal-desktop
+    pciutils
     nodejs
     usbutils
     vesktop
     ghostty
     libreoffice-qt-still
     git
+    lact
     home-manager
     neofetch
     fanctl
@@ -148,7 +158,7 @@
     prismlauncher
     starship
     nerd-fonts.jetbrains-mono
-    btop
+    btop-rocm
     obsidian
     nodejs_24
     pnpm_9

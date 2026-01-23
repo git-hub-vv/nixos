@@ -13,7 +13,7 @@ input {
     }
 
      //warp-mouse-to-focus
-     //focus-follows-mouse max-scroll-amount="0%"
+     focus-follows-mouse max-scroll-amount="0%"
 }
 
 
@@ -51,7 +51,6 @@ layout {
         proportion 0.5
         proportion 0.66667
     }
-    default-column-width {}
     preset-window-heights {
       proportion 0.33333
       proportion 0.5
@@ -185,6 +184,11 @@ binds {
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
 
+    Mod+Alt+Ctrl+Left { move-workspace-to-monitor-left; }
+    Mod+Alt+Ctrl+Right { move-workspace-to-monitor-right; }
+    Mod+Alt+Left { focus-monitor-left; }
+    Mod+Alt+Right { focus-monitor-right; }
+
 
     // Switches focus between the current and the previous workspace.
      Mod+Tab { focus-workspace-previous; }
@@ -263,6 +267,10 @@ layer-rule {
     match namespace="^noctalia-wallpaper-eDP-1"
     place-within-backdrop true
 }
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
 
 overview {
     workspace-shadow {
@@ -274,6 +282,13 @@ gestures {
     hot-corners {
         off
     }
+}
+
+layer-rule {
+    // This is for swaybg; change for other wallpaper tools.
+    // Find the right namespace by running niri msg layers.
+    match namespace="^wallpaper$"
+    place-within-backdrop true
 }
 
 spawn-at-startup "sh" "-c" "sleep 1 && noctalia-shell"

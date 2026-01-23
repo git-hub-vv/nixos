@@ -65,12 +65,6 @@
                     "showApplications": false,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
-                },
-                {
-                    "defaultSettings": {
-                        "hideInactive": false,
-                        "removeMargins": false
-                    }
                 }
             ],
             "left": [
@@ -140,6 +134,14 @@
                     "id": "Volume",
                     "middleClickCommand": "pwvucontrol || pavucontrol"
                 },
+                {
+                  "defaultSettings": {
+                    "hideInactive": false,
+                    "removeMargins": false
+                  },
+                  "id": "plugin:privacy-indicator"
+                },
+
                 {
                     "colorizeDistroLogo": true,
                     "colorizeSystemIcon": "none",
@@ -346,7 +348,7 @@
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": false,
         "wifiDetailsViewMode": "grid",
-        "wifiEnabled": true
+        "wifiEnabled": false
     },
     "nightLight": {
         "autoSchedule": true,
@@ -365,7 +367,8 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [ "DP-3"
+        "monitors": [
+            "DP-3"
         ],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
@@ -472,6 +475,11 @@
         "tempWarningThreshold": 80,
         "useCustomColors": false,
         "warningColor": ""
+    },
+    "templates": {
+        "activeTemplates": [
+        ],
+        "enableUserTheming": false
     },
     "ui": {
         "bluetoothDetailsViewMode": "grid",

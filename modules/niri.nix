@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
+    xwayland
     tokyonight-gtk-theme
     swayimg
     rose-pine-cursor
@@ -17,6 +18,10 @@
     brightnessctl
     ddcutil
   ];
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.startx.enable = false;
+  services.xserver.desktopManager.xterm.enable = false;
 
   environment.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
