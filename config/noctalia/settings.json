@@ -142,10 +142,6 @@
                     "middleClickCommand": "pwvucontrol || pavucontrol"
                 },
                 {
-                    "displayMode": "onhover",
-                    "id": "Brightness"
-                },
-                {
                     "deviceNativePath": "",
                     "displayMode": "alwaysShow",
                     "hideIfIdle": false,
@@ -156,11 +152,11 @@
                     "warningThreshold": 30
                 },
                 {
-                    "colorizeDistroLogo": false,
+                    "colorizeDistroLogo": true,
                     "colorizeSystemIcon": "none",
-                    "customIconPath": "",
+                    "customIconPath": "/home/vv/nixos/media/icons/nix/nix-snowflake-colours.svg",
                     "enableColorization": false,
-                    "icon": "niri",
+                    "icon": "nixOS",
                     "id": "ControlCenter",
                     "useDistroLogo": false
                 }
@@ -537,7 +533,7 @@
         "transitionType": "random",
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "browse",
+        "viewMode": "single",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",

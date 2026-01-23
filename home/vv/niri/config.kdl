@@ -1,14 +1,9 @@
 input {
 
-    touchpad {
-        tap
-        natural-scroll
-          accel-speed 0.2
-          accel-profile "adaptive"
-          scroll-method "two-finger"
-          disabled-on-external-mouse
-    }
-
+  tablet {
+    map-to-output "DP-1"
+  }
+    
     mouse {
         // off
         // natural-scroll
@@ -17,13 +12,8 @@ input {
         // scroll-method "no-scroll"
     }
 
-    trackpoint {
-         accel-speed 0.25
-         accel-profile "adaptive"
-    }
-
-     warp-mouse-to-focus
-     focus-follows-mouse max-scroll-amount="0%"
+     //warp-mouse-to-focus
+     //focus-follows-mouse max-scroll-amount="0%"
 }
 
 
@@ -53,32 +43,31 @@ output "DP-3" {
 
 layout {
     background-color "transparent"
-    gaps 12
+    gaps 8
     center-focused-column "never"
+    empty-workspace-above-first
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
     }
+    default-column-width {}
+    preset-window-heights {
+      proportion 0.33333
+      proportion 0.5
+      proportion 0.66667
+    }
 
     focus-ring {
-        width 1.5
-        active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        width 5
+        active-gradient from="#75ecff" to="#ff82fc" angle=315
         inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
-    shadow {
-        on
-        draw-behind-window true
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#0007"
-    }
 
     struts {
-        // left 64
-        // right 64
+        //left 64
+        //right 64
         // top 64
         // bottom 64
     }
@@ -95,69 +84,16 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
 }
 
-workspace "1" { }
-workspace "2" { }
-workspace "3" { }
-workspace "4" { }
-
-window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-window-rule {
-    match app-id=r#"zen$"#
-    draw-border-with-background false
-    geometry-corner-radius 8
-    clip-to-geometry true
-    open-on-workspace "3"
-    open-maximized true
-    opacity 0.95
-}
-
-window-rule {
-    match app-id="com.libretro.RetroArch"
-    open-floating true
-    default-column-width { fixed 1200; }
-    default-floating-position x=168 y=96 relative-to="top-left"
-}
-
-// Opacity rule
-window-rule {
-    match app-id=r#"Bitwarden$"#
-    match app-id="signal"
-    match app-id="codium"
-    match app-id="com.mitchellh.ghostty"
-    match app-id=r#"nemo$"#
-    opacity 0.85
-    draw-border-with-background false
-}
-
-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-    match app-id=r#"Bitwarden$"#
-    block-out-from "screen-capture"
-}
-
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
 
 window-rule {
-    match app-id=r#"nemo$"#
-    default-column-width { fixed 1000; }
-    default-window-height { fixed 900; }
-    open-floating true
-    default-floating-position x=0 y=14.5 relative-to="top"
+  match app-id="ghostty"
+  opacity 0.8
 }
 
-window-rule {
-    match app-id="org.jellyfin.JellyfinDesktop"
-    draw-border-with-background false
-    open-maximized true
-}
 
 binds {
 
@@ -166,10 +102,6 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
-
-    Mod+Z { spawn-sh "flatpak run app.zen_browser.zen"; }
-    Mod+X { spawn "codium"; }
-    Mod+B { spawn "/run/current-system/sw/bin/bitwarden"; }
 
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
@@ -233,12 +165,6 @@ binds {
     Mod+WheelScrollLeft       { focus-column-left; }
     Mod+Shift+WheelScrollRight { move-column-right; }
     Mod+Shift+WheelScrollLeft  { move-column-left; }
-
-    // Touchpad 2-finger swipe
-    Mod+TouchpadScrollDown cooldown-ms=350 { focus-workspace-down; }
-    Mod+TouchpadScrollUp   cooldown-ms=350 { focus-workspace-up; }
-    Mod+TouchpadScrollRight cooldown-ms=250 { focus-column-right; }
-    Mod+TouchpadScrollLeft  cooldown-ms=250 { focus-column-left; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -311,9 +237,9 @@ binds {
     // rather than stacked on top of each other.
     Mod+W { toggle-column-tabbed-display; }
 
-    Print      { screenshot; }
-    Shift+Print { screenshot-screen; }
-    Alt+Print  { screenshot-window; }
+    Mod+S { screenshot; }
+    Mod+Shift+S { screenshot-screen; }
+    Mod+Alt+S { screenshot-window; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
