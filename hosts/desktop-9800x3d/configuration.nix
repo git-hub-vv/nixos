@@ -125,6 +125,7 @@
 
 
   environment.systemPackages = with pkgs; [
+    floorp-bin
     vivaldi
     lm_sensors
     protonvpn-gui
