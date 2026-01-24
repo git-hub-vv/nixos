@@ -116,23 +116,17 @@
   nixpkgs.config.allowUnfree = true;
 
 
-  hardware.opentabletdriver.enable = true;
-
-  services.udev.packages = [
-    pkgs.opentabletdriver
-  ];
-
-  services.xserver.wacom.enable = false;
-
-
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
   services.lact.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
+
   environment.systemPackages = with pkgs; [
     vivaldi
+    lm_sensors
     protonvpn-gui
     python313
     python313Packages.pip
@@ -154,7 +148,6 @@
     bluez-tools
     picard
     qbittorrent
-    bisq2
     prismlauncher
     starship
     nerd-fonts.jetbrains-mono
@@ -165,8 +158,6 @@
     (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
     xclicker
     krita
-    huion-switcher
-    kdePackages.kde-cli-tools
     (pkgs.writeShellApplication {
       name = "rebuild-system";
       runtimeInputs = with pkgs; [ nixos-rebuild ];
