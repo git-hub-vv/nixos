@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -13,19 +13,18 @@
     #users
     #../../home/main/main-home.nix      #not working properly yet
 
+    inputs.home-manager.nixosModules.default
+
     #modules
     ../../modules/vm.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
     ../../modules/zsh/zsh.nix
+    ../../modules/niri.nix
   ];
   vm.enable = true;
   dev.enable = true;
   gaming.enable = true;
-
-
-  #needs fixin doesnt belong here !!!!!!!!!
-  users.users.vv.isNormalUser = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -62,13 +61,10 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  #services.displayManager.sddm.enable = true;
+  #services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -99,14 +95,29 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.main = {
-    isNormalUser = true;
-    description = "main";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
+  users.users = {
+    main = {
+      isNormalUser = true;
+      description = "main";
+      extraGroups = [ "networkmanager" "wheel" ];
+      packages = with pkgs; [
+      #  thunderbird
+      ];
+    };
+    vv = {
+      isNormalUser = true;
+      description = "vv";
+      extraGroups = [ "networkmanager" "wheel" ];
+      packages = with pkgs; [
+      ];
+    };
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "vv" = import ../../home/vv/home.nix;
+    };
   };
 
   # Install firefox.

@@ -8,8 +8,13 @@
 
   config = lib.mkIf config.gaming.enable {
 
-    programs.steam.enable = true;   # steam
-
+    programs.steam = {
+      enable = true;
+    };
+    environment.sessionVariables = {
+      STEAM_USE_X11 = "1";
+      STEAM_NO_SANDBOX = "1";
+    };
     # packages
     environment.systemPackages = with pkgs;
     [
