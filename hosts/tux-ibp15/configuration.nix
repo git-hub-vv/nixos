@@ -20,7 +20,7 @@
     ../../modules/gaming.nix
     ../../modules/dev.nix
     ../../modules/zsh/zsh.nix
-    ../../modules/niri.nix
+    ../../modules/niri-maint.nix
   ];
   vm.enable = true;
   dev.enable = true;
@@ -43,6 +43,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.power-profiles-daemon.enable = true;
+
+  services.upower.enable = true;
+  services.dbus.enable = true;
+  security.polkit.enable = true;
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -116,7 +121,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "vv" = import ../../home/vv/home.nix;
+      "main" = import ../../home/main/home.nix;
     };
   };
 
@@ -134,8 +139,7 @@
         pip
         pandas
     ]))
-    #python313
-    #python313Packages.pandas
+    btop-rocm
     vivaldi
     protonvpn-gui
     ghostty

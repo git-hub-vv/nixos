@@ -40,9 +40,7 @@
         "marginHorizontal": 5,
         "marginVertical": 5,
         "monitors": [
-            "DP-1",
-            "DP-2",
-            "DP-3"
+            "eDP-1"
         ],
         "outerCorners": false,
         "position": "top",
@@ -143,9 +141,23 @@
                     "id": "plugin:privacy-indicator"
                 },
                 {
+                    "deviceNativePath": "",
+                    "displayMode": "onhover",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": false,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": false,
+                    "showPowerProfiles": false,
+                    "warningThreshold": 30
+                },
+                {
+                    "displayMode": "onhover",
+                    "id": "Brightness"
+                },
+                {
                     "colorizeDistroLogo": true,
                     "colorizeSystemIcon": "none",
-                    "customIconPath": "/home/vv/nixos/media/icons/nix/nix-snowflake-colours.svg",
+                    "customIconPath": "/home/main/nixos/media/icons/nix/nix-snowflake-colours.svg",
                     "enableColorization": true,
                     "icon": "nixOS",
                     "id": "ControlCenter",
@@ -294,7 +306,7 @@
         "allowPanelsOnScreenWithoutBar": true,
         "animationDisabled": false,
         "animationSpeed": 1,
-        "avatarImage": "/home/vv/nixos/media/icons/nix/nix-snowflake-colours.svg",
+        "avatarImage": "/home/main/nixos/media/icons/nix/nix-snowflake-colours.svg",
         "boxRadiusRatio": 1,
         "compactLockScreen": false,
         "dimmerOpacity": 0.6,
@@ -348,7 +360,7 @@
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": false,
         "wifiDetailsViewMode": "grid",
-        "wifiEnabled": false
+        "wifiEnabled": true
     },
     "nightLight": {
         "autoSchedule": true,
@@ -368,7 +380,7 @@
         "location": "top_right",
         "lowUrgencyDuration": 3,
         "monitors": [
-            "DP-3"
+            "eDP-1"
         ],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
@@ -498,7 +510,7 @@
     },
     "wallpaper": {
         "automationEnabled": true,
-        "directory": "/home/vv/Pictures/Wallpapers",
+        "directory": "/home/main/nixos/media/wall",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "fillColor": "#000000",
