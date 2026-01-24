@@ -153,6 +153,7 @@
     })
     notesnook
     logseq
+    floorp-bin
   ];
 
   hardware.bluetooth.enable = true;
