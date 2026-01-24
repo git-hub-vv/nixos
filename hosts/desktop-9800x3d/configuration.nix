@@ -29,6 +29,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelParams = [
+    "amdgpu.ppfeaturemask=0xffffffff"
+  ];
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -112,29 +116,30 @@
   nixpkgs.config.allowUnfree = true;
 
 
-  hardware.opentabletdriver.enable = true;
-
-  services.udev.packages = [
-    pkgs.opentabletdriver
-  ];
-
-  services.xserver.wacom.enable = false;
-
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
+  services.lact.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
+
   environment.systemPackages = with pkgs; [
+    floorp-bin
     vivaldi
+    lm_sensors
     protonvpn-gui
     python313
     python313Packages.pip
     signal-desktop
+    pciutils
     nodejs
     usbutils
     vesktop
     ghostty
     libreoffice-qt-still
     git
+    lact
     home-manager
     neofetch
     fanctl
@@ -144,19 +149,16 @@
     bluez-tools
     picard
     qbittorrent
-    bisq2
     prismlauncher
     starship
     nerd-fonts.jetbrains-mono
-    btop
+    btop-rocm
     obsidian
     nodejs_24
     pnpm_9
     (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
     xclicker
     krita
-    huion-switcher
-    kdePackages.kde-cli-tools
     (pkgs.writeShellApplication {
       name = "rebuild-system";
       runtimeInputs = with pkgs; [ nixos-rebuild ];
