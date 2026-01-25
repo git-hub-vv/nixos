@@ -6,7 +6,7 @@ input {
     touchpad {
       tap
       natural-scroll
-      scroll-factor vertical=0.1 horizontal=0.1
+      scroll-factor vertical=0.5 horizontal=0.5
       dwt //disable while typing
       drag-lock // briefly lifting finger wont stop dragging
     }
