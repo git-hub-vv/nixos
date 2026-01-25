@@ -21,6 +21,7 @@
       mangohud  # overlay for fps, temps etc.
       heroic
       protonup-qt
+      protonplus
     ];
 
 
