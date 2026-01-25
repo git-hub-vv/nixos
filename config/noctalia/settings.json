@@ -6,7 +6,6 @@
         "customLaunchPrefixEnabled": false,
         "enableClipPreview": true,
         "enableClipboardHistory": false,
-        "enableSettingsSearch": true,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
         "pinnedApps": [
@@ -449,7 +448,7 @@
         "showHeader": true,
         "showNumberLabels": true
     },
-    "settingsVersion": 44,
+    "settingsVersion": 43,
     "systemMonitor": {
         "cpuCriticalThreshold": 90,
         "cpuPollingInterval": 3000,
@@ -498,7 +497,7 @@
     },
     "wallpaper": {
         "automationEnabled": true,
-        "directory": "/home/vv/Pictures/Wallpapers",
+        "directory": "/home/vv/nixos/media/wall",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "fillColor": "#000000",
@@ -517,7 +516,7 @@
         "transitionType": "random",
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "single",
+        "viewMode": "recursive",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
