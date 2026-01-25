@@ -34,6 +34,9 @@
         command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
         user = "greeter";
       };
+      init_session = {
+        user = "vv";
+      };
     };
   };
 
