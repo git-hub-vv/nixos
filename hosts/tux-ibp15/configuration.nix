@@ -169,6 +169,10 @@
     notesnook
     logseq
     floorp-bin
+    podman
+    podman-compose
+    # make alternative (zit project)
+    just
   ];
 
   hardware.bluetooth.enable = true;

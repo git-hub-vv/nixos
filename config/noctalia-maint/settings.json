@@ -5,7 +5,7 @@
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
         "enableClipPreview": true,
-        "enableClipboardHistory": false,
+        "enableClipboardHistory": true,
         "enableSettingsSearch": true,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
@@ -25,14 +25,14 @@
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
-        "visualizerType": "linear",
+        "visualizerType": "mirrored",
         "volumeFeedback": false,
-        "volumeOverdrive": false,
+        "volumeOverdrive": true,
         "volumeStep": 5
     },
     "bar": {
-        "backgroundOpacity": 0.7,
-        "capsuleOpacity": 1,
+        "backgroundOpacity": 0.5,
+        "capsuleOpacity": 0.7,
         "density": "default",
         "exclusive": true,
         "floating": true,
@@ -99,7 +99,7 @@
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
-                    "maxWidth": 145,
+                    "maxWidth": 160,
                     "panelShowAlbumArt": true,
                     "panelShowVisualizer": true,
                     "scrollingMode": "hover",
@@ -109,9 +109,17 @@
                     "showVisualizer": false,
                     "useFixedWidth": false,
                     "visualizerType": "linear"
+                },
+                {
+                    "width": 50,
+                    "id": "AudioVisualizer"
                 }
             ],
             "right": [
+                
+                {
+                    "id": "Taskbar"
+                },
                 {
                     "colorizeIcons": false,
                     "hideMode": "hidden",
@@ -122,11 +130,18 @@
                     "useFixedWidth": false
                 },
                 {
-                    "id": "WallpaperSelector"
+                    "id": "Tray"
+                },
+                {
+                    "id": "NotificationHistory"
                 },
                 {
                     "displayMode": "onhover",
                     "id": "Bluetooth"
+                },
+                {
+                    "displayMode": "onhover",
+                    "id": "Network"
                 },
                 {
                     "displayMode": "onhover",
@@ -142,7 +157,7 @@
                 },
                 {
                     "deviceNativePath": "",
-                    "displayMode": "onhover",
+                    "displayMode": "graphic-clean",
                     "hideIfIdle": false,
                     "hideIfNotDetected": false,
                     "id": "Battery",
@@ -309,7 +324,7 @@
         "avatarImage": "/home/main/nixos/media/icons/nix/nix-snowflake-colours.svg",
         "boxRadiusRatio": 1,
         "compactLockScreen": false,
-        "dimmerOpacity": 0.6,
+        "dimmerOpacity": 0,
         "enableLockScreenCountdown": true,
         "enableShadows": false,
         "forceBlackScreenCorners": false,
@@ -343,9 +358,9 @@
     "location": {
         "analogClockInCalendar": false,
         "firstDayOfWeek": -1,
-        "hideWeatherCityName": false,
-        "hideWeatherTimezone": false,
-        "name": "Berlin, Germany",
+        "hideWeatherCityName": true,
+        "hideWeatherTimezone": true,
+        "name": "Potsdam, Germany",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": false,
