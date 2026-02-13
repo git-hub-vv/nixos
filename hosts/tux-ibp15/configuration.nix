@@ -173,6 +173,7 @@
     podman-compose
     # make alternative (zit project)
     just
+    wireshark
   ];
 
   hardware.bluetooth.enable = true;
