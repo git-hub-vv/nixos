@@ -32,6 +32,8 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.extraModulePackages = with config.boot.kernelPackages; [yt6801];
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -104,7 +106,7 @@
     main = {
       isNormalUser = true;
       description = "main";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "wireshark" ];
       packages = with pkgs; [
       #  thunderbird
       ];
@@ -128,17 +130,37 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  hardware.tuxedo-drivers.enable = true;
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+    usbmon.enable = true;
+  };
+
+  #programs.wireshark.enable = true;
+  #programs.wireshark.dumpcap.enable = true;
+  #programs.wireshark.usbmon.enable = true;
+
+  services.udev = { extraRules = '' SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640" ''; };
+
   nixpkgs.config.allowUnfree = true;
   hardware.tuxedo-rs = {
     enable = true;
     tailor-gui.enable = true;
   };
+  qt.enable = true;
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_6_18.tuxedo-drivers
       (python3.withPackages (ps: with ps; [
         pip
         pandas
     ]))
+    xfce.thunar
+    emiluaPlugins.qt6
+    pipewire
+    #linuxKernel.packages.linux_zen.yt6801;
+    libsForQt5.qt5ct
     btop-rocm
     vivaldi
     protonvpn-gui
