@@ -144,6 +144,8 @@
 
   services.udev = { extraRules = '' SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640" ''; };
 
+  services.gvfs.enable = true;
+  
   nixpkgs.config.allowUnfree = true;
   hardware.tuxedo-rs = {
     enable = true;
