@@ -29,6 +29,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  #boot.kernelModules = [ "wacom" ];
+  #boot.blacklistedKernelModules = [ "wacom" "hid_wacom" "hid-uclogic" ];# "hid-uclogic"
+  
   boot.kernelParams = [
     "amdgpu.ppfeaturemask=0xffffffff"
   ];
@@ -116,12 +119,36 @@
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
   services.lact.enable = true;
+  #hardware.opentabletdriver.enable = true;
+  hardware.keyboard.qmk.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
+    systemd.user.services.opentabletdriver = {
+      description = "Open source, cross-platform, user-mode tablet driver";
+      wantedBy = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
 
+      serviceConfig = {
+        Type = "simple";
+        # workaround for https://github.com/NixOS/nixpkgs/issues/469340
+        ExecStartPre = pkgs.writeShellScript "disable-for-gdm-greeter" ''
+          if [[ "$USER" = "gdm-greeter"* ]]; then
+            exit 1
+          fi
+        '';
+      };
+    };
+  
+  environment.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "x11";
+  };
+
+  boot.blacklistedKernelModules = [ "wacom" "hid_wacom" "hid-uclogic" ];# "hid-uclogic"
   environment.systemPackages = with pkgs; [
+    config.hardware.opentabletdriver.package
+    opentabletdriver
     floorp-bin
     vivaldi
     lm_sensors
@@ -138,7 +165,7 @@
     git
     lact
     home-manager
-    neofetch
+    fastfetch
     fanctl
     freecad
     orca-slicer
@@ -151,11 +178,14 @@
     nerd-fonts.jetbrains-mono
     btop-rocm
     obsidian
+    logseq
     nodejs_24
     pnpm_9
     (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
     xclicker
     krita
+    # games
+      osu-lazer-bin
     (pkgs.writeShellApplication {
       name = "rebuild-system";
       runtimeInputs = with pkgs; [ nixos-rebuild ];
@@ -166,6 +196,16 @@
       '';
     })
     bat
+    kdePackages.dolphin
+    #opentabletdriver
+    libwacom
+    #kdePackages.wacomtablet
+    via
+  ];
+
+  services.udev.packages = with pkgs; [ 
+    via 
+    config.hardware.opentabletdriver.package 
   ];
 
   home-manager = {
