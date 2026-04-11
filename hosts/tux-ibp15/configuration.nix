@@ -195,9 +195,11 @@
     floorp-bin
     podman
     podman-compose
-    # make alternative (zit project)
-    just
     wireshark
+    cargo
+    # Rust
+    rustc
+    clippy
   ];
 
   hardware.bluetooth.enable = true;
