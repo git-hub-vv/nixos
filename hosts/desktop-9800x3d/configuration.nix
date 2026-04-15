@@ -153,6 +153,7 @@
     vivaldi
     lm_sensors
     protonvpn-gui
+    zotero
     python313
     python313Packages.pip
     signal-desktop
@@ -168,6 +169,8 @@
     fastfetch
     fanctl
     freecad
+    vulkan-tools
+    mesa
     orca-slicer
     bluez
     bluez-tools
@@ -178,7 +181,8 @@
     nerd-fonts.jetbrains-mono
     btop-rocm
     obsidian
-    logseq
+    #logseq
+    (logseq.override { electron = electron_39; })
     nodejs_24
     pnpm_9
     (builtins.getFlake "/home/vv/nixos/modules/nixvim").packages.${pkgs.system}.default
@@ -214,6 +218,9 @@
       "vv" = import ../../home/vv/home.nix;
     };
   };
+  
+
+  hardware.opengl.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
