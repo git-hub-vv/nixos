@@ -83,7 +83,7 @@ window-rule {
 
 window-rule {
   match app-id="ghostty"
-  opacity 0.9
+  opacity 0.95
 }
 
 
