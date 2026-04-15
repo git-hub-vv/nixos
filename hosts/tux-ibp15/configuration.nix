@@ -146,6 +146,9 @@
 
   services.gvfs.enable = true;
   
+  environment.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "x11";
+  };
   nixpkgs.config.allowUnfree = true;
   hardware.tuxedo-rs = {
     enable = true;
@@ -158,6 +161,7 @@
         pip
         pandas
     ]))
+    logseq
     xfce.thunar
     emiluaPlugins.qt6
     pipewire
@@ -200,6 +204,7 @@
     # Rust
     rustc
     clippy
+    zotero
   ];
 
   hardware.bluetooth.enable = true;

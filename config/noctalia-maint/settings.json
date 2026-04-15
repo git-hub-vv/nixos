@@ -29,7 +29,7 @@
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
-        "visualizerType": "wave",
+        "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeOverdrive": true,
         "volumeStep": 5
